@@ -22,9 +22,7 @@ Dir['descriptors/*.yaml'].each do |f|
   descriptors.each_with_index do |descriptor, index|
     broken_descriptor = descriptor.delete 'hidReportDescriptor'
     descriptor.merge!({
-      'HIDDefaultBehavior' => '',
-      'IOClass' => 'IOUSBHIDDriverDescriptorOverride',
-      'IOProviderClass' => 'IOUSBHostInterface',
+      'IOClass' => 'IOBluetoothHIDDriverDescriptorOverride',
       'CFBundleIdentifier' => '$(PRODUCT_BUNDLE_IDENTIFIER)',
       'ReportDescriptorOverride' => StringIO.new(fix_descriptor(broken_descriptor))
     })
